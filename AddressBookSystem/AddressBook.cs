@@ -6,18 +6,20 @@ namespace AddressBookSystem
 {
     /// <summary>
     /// To Create Contacts
+    /// To Add Contacts
+    /// To Edit Contacts
     /// </summary>
     class AddressBook
     {
         public string FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email;
         public static List<AddressBook> Person = new List<AddressBook>();
-       
+
         // Getting details of contacts
         public static void Getdetails()
         {
             AddressBook addressBook = new AddressBook();
             Console.WriteLine("Enter First Name : ");
-             addressBook.FirstName= Console.ReadLine();
+            addressBook.FirstName = Console.ReadLine();
             Console.WriteLine("Enter Last Name : ");
             addressBook.LastName = Console.ReadLine();
             Console.WriteLine("Enter Address: ");
@@ -35,6 +37,8 @@ namespace AddressBookSystem
 
             Person.Add(addressBook);
         }
+
+        // Contact Details are displayed
         public static void DisplayContact(AddressBook addressBook)
         {
             Console.WriteLine("First Name: " + addressBook.FirstName);
@@ -46,7 +50,7 @@ namespace AddressBookSystem
             Console.WriteLine("ZipCode : " + addressBook.Zip);
             Console.WriteLine("Phone Number: " + addressBook.PhoneNumber);
             Console.WriteLine("EmailId: " + addressBook.Email);
-           
+
         }
         public static void AddContact()
         {
@@ -56,12 +60,80 @@ namespace AddressBookSystem
                 Console.ReadKey();
                 return;
             }
-            
+
             foreach (var addressBook in Person)
             {
                 DisplayContact(addressBook);
             }
             Console.ReadKey();
         }
+
+        // Function is used to edit the contacts 
+        public static void EditCon()
+        {
+            if (Person.Count != 0)
+            {
+                string Modifyone = Console.ReadLine();
+                foreach (var addressBook in Person)
+                {
+                    if (addressBook.PhoneNumber == Modifyone)
+                    {
+                        while (true)
+                        {
+                            int ToChange = Convert.ToInt32(Console.ReadLine());
+                            switch (ToChange)
+                            {
+                                case 1:
+                                    Console.WriteLine("Enter the First Name: ");
+                                    addressBook.FirstName = Console.ReadLine();
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Enter the Last Name: ");
+                                    addressBook.LastName = Console.ReadLine();
+                                    break;
+                                case 3:
+                                    Console.WriteLine("Enter the Phone Number: ");
+                                    addressBook.PhoneNumber = Console.ReadLine();
+                                    break;
+                                case 4:
+                                    Console.WriteLine("Enter the Address: ");
+                                    addressBook.Address = Console.ReadLine();
+                                    break;
+                                case 5:
+                                    Console.WriteLine("Enter the City: ");
+                                    addressBook.City = Console.ReadLine();
+                                    break;
+                                case 6:
+                                    Console.WriteLine("Enter the State: ");
+                                    addressBook.State = Console.ReadLine();
+                                    break;
+                                case 7:
+                                    Console.WriteLine("Enter the Pin Code: ");
+                                    addressBook.Zip = Console.ReadLine();
+                                    break;
+                                case 8:
+                                    Console.WriteLine("Enter the Email: ");
+                                    addressBook.Email = Console.ReadLine();
+                                    break;
+
+                                case 9:
+                                    return;
+
+                                default:
+                                    break;
+
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter Valid Phone Number");
+                    }
+                }
+            }
+        }
     }
 }
+          
+
