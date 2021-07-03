@@ -77,7 +77,7 @@ namespace AddressBookSystem
                 string Modifyone = Console.ReadLine();
                 foreach (var addressBook in Person)
                 {
-                    if (addressBook.PhoneNumber == Modifyone)
+                    if (addressBook.Equals(Modifyone))
                     {
                         while (true)
                         {
@@ -141,7 +141,7 @@ namespace AddressBookSystem
             string ToRemove = Console.ReadLine();
             foreach (var addressBook in Person)
             {
-                if (addressBook.PhoneNumber == ToRemove)
+                if (addressBook.Equals(ToRemove))
                 {
                     // Contact is deleted
                     Person.Remove(addressBook);
