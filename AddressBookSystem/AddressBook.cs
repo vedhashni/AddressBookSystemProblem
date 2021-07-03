@@ -8,6 +8,7 @@ namespace AddressBookSystem
     /// To Create Contacts
     /// To Add Contacts
     /// To Edit Contacts
+    /// To delete contact
     /// </summary>
     class AddressBook
     {
@@ -130,6 +131,25 @@ namespace AddressBookSystem
                     {
                         Console.WriteLine("Enter Valid Phone Number");
                     }
+                }
+            }
+        }
+        // Function to delete the contact
+
+        public static void DeleteCon()
+        {
+            string ToRemove = Console.ReadLine();
+            foreach (var addressBook in Person)
+            {
+                if (addressBook.PhoneNumber == ToRemove)
+                {
+                    // Contact is deleted
+                    Person.Remove(addressBook);
+
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not found");
                 }
             }
         }
