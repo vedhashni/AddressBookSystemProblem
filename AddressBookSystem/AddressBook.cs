@@ -13,30 +13,34 @@ namespace AddressBookSystem
     class AddressBook
     {
         public string FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email;
-        public static List<AddressBook> Person = new List<AddressBook>();
+        public static List<AddressBook> person = new List<AddressBook>();
 
         // Getting details of contacts
         public static void Getdetails()
         {
-            AddressBook addressBook = new AddressBook();
-            Console.WriteLine("Enter First Name : ");
-            addressBook.FirstName = Console.ReadLine();
-            Console.WriteLine("Enter Last Name : ");
-            addressBook.LastName = Console.ReadLine();
-            Console.WriteLine("Enter Address: ");
-            addressBook.Address = Console.ReadLine();
-            Console.WriteLine("Enter City : ");
-            addressBook.City = Console.ReadLine();
-            Console.WriteLine("Enter State : ");
-            addressBook.State = Console.ReadLine();
-            Console.WriteLine("Enter Zip code : ");
-            addressBook.Zip = Console.ReadLine();
-            Console.WriteLine("Enter Phone Number : ");
-            addressBook.PhoneNumber = Console.ReadLine();
-            Console.WriteLine("Enter Email : ");
-            addressBook.Email = Console.ReadLine();
+            
+                AddressBook addressBook = new AddressBook();
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("Enter First Name : ");
+                addressBook.FirstName = Console.ReadLine();
+                Console.WriteLine("Enter Last Name : ");
+                addressBook.LastName = Console.ReadLine();
+                Console.WriteLine("Enter Address: ");
+                addressBook.Address = Console.ReadLine();
+                Console.WriteLine("Enter City : ");
+                addressBook.City = Console.ReadLine();
+                Console.WriteLine("Enter State : ");
+                addressBook.State = Console.ReadLine();
+                Console.WriteLine("Enter Zip code : ");
+                addressBook.Zip = Console.ReadLine();
+                Console.WriteLine("Enter Phone Number : ");
+                addressBook.PhoneNumber = Console.ReadLine();
+                Console.WriteLine("Enter Email : ");
+                addressBook.Email = Console.ReadLine();
 
-            Person.Add(addressBook);
+                person.Add(addressBook);
+            }
         }
 
         // Contact Details are displayed
@@ -55,14 +59,14 @@ namespace AddressBookSystem
         }
         public static void AddContact()
         {
-            if (Person.Count == 0)
+            if (person.Count == 0)
             {
                 Console.WriteLine("Your address book contacts are empty.");
                 Console.ReadKey();
                 return;
             }
 
-            foreach (var addressBook in Person)
+            foreach (var addressBook in person)
             {
                 DisplayContact(addressBook);
             }
@@ -72,10 +76,10 @@ namespace AddressBookSystem
         // Function is used to edit the contacts 
         public static void EditCon()
         {
-            if (Person.Count != 0)
+            if (person.Count != 0)
             {
                 string Modifyone = Console.ReadLine();
-                foreach (var addressBook in Person)
+                foreach (var addressBook in person)
                 {
                     if (addressBook.Equals(Modifyone))
                     {
@@ -139,12 +143,12 @@ namespace AddressBookSystem
         public static void DeleteCon()
         {
             string ToRemove = Console.ReadLine();
-            foreach (var addressBook in Person)
+            foreach (var addressBook in person)
             {
                 if (addressBook.Equals(ToRemove))
                 {
                     // Contact is deleted
-                    Person.Remove(addressBook);
+                    person.Remove(addressBook);
 
                 }
                 else
