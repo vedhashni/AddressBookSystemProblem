@@ -78,11 +78,31 @@ namespace AddressBookSystem
                         Console.WriteLine(" ");
                         addrBook.ListingPeople();
                         break;
-                    default:
-                        Console.WriteLine("Enter valid option!");
+
+                    case "3":
+                        Console.WriteLine("Enter 1-To Search a person through a City");
+                        Console.WriteLine("Enter 2-To Search a person through a State");
+                        Console.WriteLine("Enter 3-To view a person by state list or city list");
+                        int opt = Convert.ToInt32(Console.ReadLine());
+                        switch (opt)
+                        {
+
+                            case 1:
+                                SearchAddress(opt);
+                                break;
+                            case 2:
+                                SearchAddress(opt);
+                                break;
+                                
+                            case 3:
+                                AddrBook.DisplayCityorState();
+
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Option!");
+                                break;
+                        }
                         break;
-
-
                 }
                 if (addressBook.ContainsKey(addressbookname))
                 {
@@ -93,28 +113,36 @@ namespace AddressBookSystem
                 {
                     addressBook.Add(addressbookname, addrBook.people);
                 }
-
-
                 noOfBooks++;
-            }
-            Console.WriteLine("Enter City name which you want to person details");
-            string cityname = Console.ReadLine();
-            Console.WriteLine("Enter state name which you want to person details");
-            string statename = Console.ReadLine();
+                foreach (KeyValuePair<string, List<AddrBook>> addr in addressBook)
+                {
+                    Console.WriteLine("The address Books are:{0}", addr.Key);
 
-            foreach (KeyValuePair<string, List<AddrBook>> contact in addressBook)
+                }
+            }
+            static void SearchAddress(int option)
             {
-                Console.WriteLine("The Contact List from {0} or {1}", cityname, statename);
-                AddrBook addr = new AddrBook();
-                addr.Search(contact.Value, cityname, statename);
+                string city, state;
+                if (option == 1)
+                {
+                    Console.WriteLine("Enter the City Name");
+                    city = Console.ReadLine();
+                    foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
+                    {
+                        AddrBook.StoreCityList(kvp.Key, kvp.Value, city);
+                    }
+                    if (option == 2)
+                    {
+                        Console.WriteLine("Enter the City Name");
+                        state = Console.ReadLine();
+                        foreach (KeyValuePair<string, List<AddrBook>> kvp in addressBook)
+                        {
+                            AddrBook.StoreStateList(kvp.Key, kvp.Value, state);
+                        }
+                    }
+                }
             }
-
-            foreach (KeyValuePair<string, List<AddrBook>> addr in addressBook)
-            {
-                Console.WriteLine("The address Books are:{0}", addr.Key);
-
-            }
-
         }
     }
 }
+
