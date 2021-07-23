@@ -203,6 +203,25 @@ namespace AddressBookSystem
 
             }
         }
+
+        //Is used for searching 
+        public void Search(List<AddrBook> people, string cityname, string statename)
+        {
+
+            AddrBook addrBook = new AddrBook();
+            var result = people.FindAll(a => a.City.Equals(cityname) || a.State.Equals(statename));
+            if (result.Count != 0)
+            {
+                foreach (var m in result)
+                {
+                    PrintCustomer(m);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No person details available");
+            }
+        }
     }
 }
 

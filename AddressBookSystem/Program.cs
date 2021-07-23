@@ -97,6 +97,17 @@ namespace AddressBookSystem
 
                 noOfBooks++;
             }
+            Console.WriteLine("Enter City name which you want to person details");
+            string cityname = Console.ReadLine();
+            Console.WriteLine("Enter state name which you want to person details");
+            string statename = Console.ReadLine();
+
+            foreach (KeyValuePair<string, List<AddrBook>> contact in addressBook)
+            {
+                Console.WriteLine("The Contact List from {0} or {1}", cityname, statename);
+                AddrBook addr = new AddrBook();
+                addr.Search(contact.Value, cityname, statename);
+            }
 
             foreach (KeyValuePair<string, List<AddrBook>> addr in addressBook)
             {
