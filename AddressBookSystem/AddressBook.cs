@@ -14,7 +14,7 @@ namespace AddressBookSystem
     /// </summary>
     public interface IAddressBookSystem
     {
-        void GetCustomer();
+        //void GetCustomer();
 
         void ListingPeople();
         void RemovePeople();
@@ -22,66 +22,60 @@ namespace AddressBookSystem
     // Getting details of contacts
     public class AddrBook : IAddressBookSystem
     {
-        public LinkedList<Person> people;
+        public List<AddrBook> people;
         public AddrBook()
         {
-            people = new LinkedList<Person>();
+            people = new List<AddrBook>();
         }
-        public class Person
+
+        public string FirstName;
+        public string LastName;
+        public string PhoneNumber;
+        public string Addresses;
+        public string City;
+        public string State;
+        public string ZipCode;
+        public string PhoneNum;
+        public string EmailId;
+
+        public AddrBook(string FirstName, string LastName, string Addresses, string City, string State, string ZipCode, string PhoneNum, string EmailId)
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string PhoneNumber { get; set; }
-            public string Addresses { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string ZipCode { get; set; }
-            public string PhoneNum { get; set; }
-            public string EmailId { get; set; }
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Addresses = Addresses;
+            this.City = City;
+            this.State = State;
+            this.ZipCode = ZipCode;
+            this.PhoneNum= PhoneNum;
+            this.EmailId = EmailId;
+
         }
-        public void GetCustomer()
+
+        public void GetCustomer(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
-            Person person = new Person();
-
-            Console.Write("Enter First Name: ");
-            person.FirstName = Console.ReadLine();
-
-           
-            Console.Write("Enter Last Name: ");
-            person.LastName = Console.ReadLine();
-
-            Console.Write("Enter Address : ");
-            person.Addresses = Console.ReadLine();
-
-            
-            Console.Write("Enter City : ");
-            person.City = Console.ReadLine();
-
-            
-            Console.Write("Enter State : ");
-            person.State = Console.ReadLine();
-
-            
-            Console.Write("Enter ZipCode: ");
-            person.ZipCode = Console.ReadLine();
-
-           
-            Console.Write("Enter Phone Number: ");
-            person.PhoneNum = Console.ReadLine();
-
-          
-            Console.Write("Enter EmailId: ");
-            person.EmailId = Console.ReadLine();
-
-            
-        
-        people.AddLast(person);
+            AddrBook person = new AddrBook(firstName, lastName, phoneNum, address, city, state, zipCode, emailId);
+            if (people.Count == 0)
+            {
+                people.Add(person);
+            }
+            else
+            {
+                AddrBook people = this.people.Find(a => a.FirstName.Equals(firstName));
+                if (people == null)
+                {
+                    AddrBook p = new AddrBook(firstName, lastName, address, city, state, phoneNum, zipCode, emailId);
+                    this.people.Add(p);
+                }
+                else
+                {
+                    Console.WriteLine("record is already exists");
+                }
+            }
         }
 
 
 
-    
-        public void PrintCustomer(Person person)
+  public void PrintCustomer(AddrBook person)
     {
         Console.WriteLine("First Name: " + person.FirstName);
         Console.WriteLine("Last Name: " + person.LastName);
@@ -170,7 +164,7 @@ namespace AddressBookSystem
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
                 return;
-                return;
+                
             }
             Console.WriteLine("Here are the current people in your address book:\n");
             foreach (var person in people)
@@ -178,12 +172,12 @@ namespace AddressBookSystem
                 PrintCustomer(person);
             }
             return;
-            Console.WriteLine("\nPress any key to continue.");
+            //Console.WriteLine("\nPress any key to continue.");
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
-        /
+        
         
         //Removing the field using Lambda Function
         public void RemovePeople()
@@ -191,7 +185,7 @@ namespace AddressBookSystem
             Console.WriteLine("Enter the first name of the person you would like to remove.");
            
             string firstName = Console.ReadLine();
-            Person person = people.FirstOrDefault(x => x.FirstName.ToUpper() == firstName.ToUpper());
+            AddrBook person = people.FirstOrDefault(x => x.FirstName.ToUpper() == firstName.ToUpper());
             if (person == null)
             {
                 
