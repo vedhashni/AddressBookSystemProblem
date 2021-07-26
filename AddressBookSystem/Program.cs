@@ -98,6 +98,22 @@ namespace AddressBookSystem
                                 AddrBook.DisplayCityorState();
 
                                 break;
+
+                            case 4:
+                                AddrBook.SortBasedOnCity(addressBook);
+                                break;
+                            case 5:
+                                AddrBook.SortBasedOnState(addressBook);
+                                break;
+                            case 6:
+                                AddrBook.SortBasedOnZipCode(addressBook);
+                                break;
+                            case 7:
+                                FileIOOperation.WriteInFile(addressBook);
+                                break;
+                            case 8:
+                                FileIOOperation.ReadAddressBook();
+                                break;
                             default:
                                 Console.WriteLine("Invalid Option!");
                                 break;
