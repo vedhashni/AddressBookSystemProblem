@@ -32,15 +32,15 @@ namespace AddressBookSystem
             people = new List<AddrBook>();
         }
 
-        public string FirstName;
-        public string LastName;
-        public string PhoneNumber;
-        public string Addresses;
-        public string city;
-        public string state;
-        public string ZipCode;
-        public string PhoneNum;
-        public string EmailId;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Addresses { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string ZipCode { get; set; }
+        public string PhoneNum { get; set; }
+        public string EmailId { get; set; }
 
         public AddrBook(string FirstName, string LastName, string Addresses, string City, string State, string ZipCode, string PhoneNum, string EmailId)
         {

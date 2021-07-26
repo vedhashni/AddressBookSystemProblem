@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "BK3zLgTrKXxwZbbb4RFBudmVK8tOBIPrvp8v0tBIo8CGJI3vux3kzL6mgmQsZpu0beWrQlhP9AczPGfDy40bnA==",
+  "dgSpecHash": "pmUMmUchDvtmaz+vSXP1xWOKkFSQIdOg0lcQIqf8FsshdIoDQ1wzmQ3RoPO0V8BIcwwB5zssNXHmlxoQ5YM6Wg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ven\\source\\repos\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ven\\.nuget\\packages\\csvhelper\\27.1.1\\csvhelper.27.1.1.nupkg.sha512",
+    "C:\\Users\\ven\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

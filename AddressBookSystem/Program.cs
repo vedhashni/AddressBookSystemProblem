@@ -114,6 +114,11 @@ namespace AddressBookSystem
                             case 8:
                                 FileIOOperation.ReadAddressBook();
                                 break;
+
+                            case 10:
+                                CsvOperations.WriteInCSVFile(addressBook);
+                                break;
+
                             default:
                                 Console.WriteLine("Invalid Option!");
                                 break;
